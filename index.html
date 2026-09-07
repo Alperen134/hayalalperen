@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8dce5">
+  <title>Alperen & Hayal ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#f6d7df; --rose:#b86f82; --dark:#4b3038; --cream:#fff9f7;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--dark);font-family:Montserrat,sans-serif}
+    .hidden{display:none!important}
+    #lock{min-height:100vh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden;
+      background:radial-gradient(circle at 20% 20%,#fff 0 15%,transparent 40%),
+                 linear-gradient(135deg,#fff7f5,#f7dce4)}
+    .petal{position:absolute;font-size:30px;opacity:.22;animation:float 7s infinite ease-in-out}
+    .p1{left:8%;top:15%}.p2{right:10%;top:25%;animation-delay:1s}.p3{left:20%;bottom:15%;animation-delay:2s}.p4{right:22%;bottom:10%;animation-delay:3s}
+    @keyframes float{50%{transform:translateY(-22px) rotate(12deg)}}
+    .lock-card{width:min(430px,100%);padding:42px 28px;text-align:center;background:rgba(255,255,255,.72);
+      backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.8);border-radius:30px;box-shadow:0 20px 70px #9b657322}
+    .heart{font-size:48px;margin-bottom:4px}
+    h1,h2{font-family:"Cormorant Garamond",serif}
+    .lock-card h1{font-size:42px;margin:0 0 8px}
+    .lock-card p{font-size:13px;opacity:.7;margin:0 0 25px}
+    input{width:100%;padding:15px 17px;border:1px solid #e5bdc9;border-radius:14px;background:#fff;color:var(--dark);font-size:16px;outline:none;text-align:center}
+    button{width:100%;margin-top:12px;padding:15px;border:0;border-radius:14px;background:var(--rose);color:white;font-weight:600;font-size:15px;cursor:pointer}
+    #wrong{color:#a84d67;font-size:12px;margin-top:10px;min-height:16px}
+    .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:35px 20px;
+      background:linear-gradient(rgba(255,247,246,.35),rgba(255,247,246,.9)),url("images/cover.jpg") center/cover;
+      position:relative}
+    .hero-inner{max-width:760px;background:#fff8f5cc;backdrop-filter:blur(5px);padding:45px 28px;border-radius:35px}
+    .eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:11px;opacity:.65}
+    .hero h1{font-size:clamp(56px,13vw,105px);line-height:.8;margin:20px 0;color:#633e49}
+    .hero h1 span{font-size:.45em;display:block;margin:17px 0;font-family:Montserrat;font-weight:400}
+    .hero p{font-family:"Cormorant Garamond",serif;font-size:28px;margin:0}
+    .scroll{margin-top:35px;font-size:12px;opacity:.6}
+    section{padding:90px 20px;max-width:1050px;margin:auto}
+    .title{text-align:center;margin-bottom:38px}
+    .title h2{font-size:50px;margin:0 0 8px}
+    .title p{font-size:13px;opacity:.65}
+    .letter{background:white;border-radius:28px;padding:38px;box-shadow:0 12px 45px #8b596614;line-height:1.9;font-family:"Cormorant Garamond",serif;font-size:24px;text-align:center}
+    .timer{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:720px;margin:auto}
+    .time{background:#fff;border-radius:20px;padding:22px 8px;text-align:center;box-shadow:0 10px 35px #8b596612}
+    .num{font-family:"Cormorant Garamond",serif;font-size:43px;font-weight:700}
+    .label{font-size:10px;text-transform:uppercase;letter-spacing:1px;opacity:.55}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .photo{aspect-ratio:1/1;border-radius:22px;overflow:hidden;background:#f2dfe4;position:relative}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo.placeholder{display:grid;place-items:center;text-align:center;padding:15px;color:#9a6875;font-size:12px}
+    .memory{background:#f9e8eb;border-radius:28px;padding:40px;text-align:center}
+    .memory .date{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.6}
+    .memory h3{font-family:"Cormorant Garamond",serif;font-size:42px;margin:12px 0}
+    footer{text-align:center;padding:65px 20px 90px}
+    footer .big{font-family:"Cormorant Garamond",serif;font-size:38px}
+    .music-btn{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;margin:0;padding:0;background:#fff;color:var(--rose);box-shadow:0 8px 25px #0002;z-index:10}
+    @media(max-width:650px){
+      section{padding:70px 16px}.gallery{grid-template-columns:repeat(2,1fr)}.timer{grid-template-columns:repeat(2,1fr)}
+      .letter{padding:28px 20px;font-size:21px}.title h2{font-size:42px}.hero-inner{padding:38px 20px}
+    }
+  </style>
+</head>
+<body>
+<div id="lock">
+  <div class="petal p1">🌸</div><div class="petal p2">🌷</div><div class="petal p3">🌸</div><div class="petal p4">🌷</div>
+  <div class="lock-card">
+    <div class="heart">♡</div>
+    <h1>Alperen & Hayal</h1>
+    <p>Bu küçük dünya sadece ikimiz için.</p>
+    <input id="password" type="password" inputmode="numeric" placeholder="Şifreyi gir..." autocomplete="off">
+    <button onclick="unlock()">Giriş yap ♡</button>
+    <div id="wrong"></div>
+  </div>
+</div>
+
+<main id="site" class="hidden">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">sana ait küçük bir köşe</div>
+      <h1>Alperen <span>&</span> Hayal</h1>
+      <p>Biricik sevgilimmmm ♡</p>
+      <div class="scroll">aşağı kaydır · anılarımız burada</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title"><h2>Biricik sevgilimmmm</h2><p>Belki kelimeler yetmez ama yine de deniyorum...</p></div>
+    <div class="letter">
+      Seninle geçen her anı biraz daha özel yapan bir şey var.
+      Bu site de bizim için küçük bir anı kutusu olsun.
+      Buraya beraber güldüğümüz, gezdiğimiz, sarıldığımız ve
+      “iyi ki” dediğimiz bütün güzel şeyleri bırakabiliriz.
+      <br><br>
+      <b>Seni çok seviyorum Hayal. ♡</b>
+    </div>
+  </section>
+
+  <section>
+    <div class="title"><h2>Ne kadar zamandır?</h2><p>3 Aralık 2024'ten beri...</p></div>
+    <div class="timer">
+      <div class="time"><div class="num" id="days">0</div><div class="label">gün</div></div>
+      <div class="time"><div class="num" id="hours">0</div><div class="label">saat</div></div>
+      <div class="time"><div class="num" id="minutes">0</div><div class="label">dakika</div></div>
+      <div class="time"><div class="num" id="seconds">0</div><div class="label">saniye</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title"><h2>Anılarımız</h2><p>Fotoğraflarını aşağıdaki kutulara ekleyebilirsin.</p></div>
+    <div class="gallery">
+      <div class="photo"><img src="images/photo1.jpg" alt="Anımız 1" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo1.jpg ekle'"></div>
+      <div class="photo"><img src="images/photo2.jpg" alt="Anımız 2" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo2.jpg ekle'"></div>
+      <div class="photo"><img src="images/photo3.jpg" alt="Anımız 3" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo3.jpg ekle'"></div>
+      <div class="photo"><img src="images/photo4.jpg" alt="Anımız 4" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo4.jpg ekle'"></div>
+      <div class="photo"><img src="images/photo5.jpg" alt="Anımız 5" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo5.jpg ekle'"></div>
+      <div class="photo"><img src="images/photo6.jpg" alt="Anımız 6" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo6.jpg ekle'"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="memory">
+      <div class="date">03 · 12 · 2024</div>
+      <h3>Her şeyin başladığı gün ♡</h3>
+      <p>Ve umarım daha nice güzel günün ilk sayfasıdır.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big">Sonsuza kadar sen & ben. ♡</div>
+    <p>Alperen → Hayal</p>
+  </footer>
+</main>
+
+<button id="musicBtn" class="music-btn hidden" onclick="toggleMusic()">♫</button>
+<audio id="music" loop preload="none">
+  <source src="music/ben.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const PASSWORD = "030925";
+  const START_DATE = new Date("2024-12-03T00:00:00");
+
+  function unlock(){
+    const val = document.getElementById("password").value;
+    if(val === PASSWORD){
+      document.getElementById("lock").classList.add("hidden");
+      document.getElementById("site").classList.remove("hidden");
+      document.getElementById("musicBtn").classList.remove("hidden");
+      localStorage.setItem("hayalUnlocked","1");
+      updateTimer();
+    } else {
+      document.getElementById("wrong").textContent = "Şifre yanlış, tekrar dene ♡";
+    }
+  }
+  document.getElementById("password").addEventListener("keydown", e => { if(e.key==="Enter") unlock(); });
+
+  function updateTimer(){
+    const diff = Math.max(0, Date.now() - START_DATE.getTime());
+    const total = Math.floor(diff/1000);
+    document.getElementById("days").textContent = Math.floor(total/86400);
+    document.getElementById("hours").textContent = Math.floor(total%86400/3600);
+    document.getElementById("minutes").textContent = Math.floor(total%3600/60);
+    document.getElementById("seconds").textContent = total%60;
+  }
+  setInterval(updateTimer,1000);
+
+  let playing=false;
+  function toggleMusic(){
+    const m=document.getElementById("music");
+    if(!m.querySelector("source").getAttribute("src")) return;
+    if(!playing){m.play();playing=true;document.getElementById("musicBtn").textContent="❚❚";}
+    else {m.pause();playing=false;document.getElementById("musicBtn").textContent="♫";}
+  }
+</script>
+</body>
+</html>
