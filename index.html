@@ -501,6 +501,95 @@ footer .big{
     height:44px
   }
 }
+.letter-modal{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .35s ease, visibility .35s ease;
+}
+
+.letter-modal.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.letter-paper{
+  position:relative;
+  width:min(850px,92vw);
+  height:min(850px,88vh);
+  overflow-y:auto;
+  padding:55px 45px 45px;
+  box-sizing:border-box;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #f5e4b8 0px,
+      #f5e4b8 31px,
+      #c9b98f 32px,
+      #f5e4b8 33px
+    );
+  border-radius:3px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  transform:scale(.75) translateY(40px) rotate(-2deg);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.letter-modal.open .letter-paper{
+  transform:scale(1) translateY(0) rotate(0deg);
+}
+
+.letter-close{
+  position:absolute;
+  top:12px;
+  right:15px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:rgba(80,50,20,.12);
+  color:#5b4328;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.letter-close:hover{
+  background:rgba(80,50,20,.2);
+}
+
+.letter-content{
+  color:#4b3925;
+  font-family:"Segoe Print","Comic Sans MS",cursive;
+  font-size:19px;
+  line-height:32px;
+  white-space:normal;
+}
+
+@media(max-width:600px){
+
+  .letter-modal{
+    padding:12px;
+  }
+
+  .letter-paper{
+    width:94vw;
+    height:88vh;
+    padding:50px 24px 30px;
+  }
+
+  .letter-content{
+    font-size:16px;
+    line-height:29px;
+  }
+
+}
 </style>
 </head>
 
@@ -815,16 +904,35 @@ Mektubu aç ♡
 
 <div id="message" class="message">
 
-Biricik sevgilim,
+İlerdeki karıcığıma,
 
 <br><br>
 
-Buraya ona yazmak istediğin özel mektubu daha sonra ekleyebilirsin.
+şuanda ben almanyadayım ve sende üniversiten başlayacak diye heyecan yapıyosun türkiyede. Okula alışabilcek miyim? İstanbula alışabilcek miyim? heyecanı var üstünde bunların hepsini aşacağını biliyorum aşkım. İkimizi de çok güzel bir hayat bekliyor ilerde.
 
 <br><br>
 
-İyi ki varsın. İyi ki benimlesin.
-Seni her şeyden çok seviyorum. ♡
+Biliyorum şuanda zorlanıyoruz ama bunların hepsini birlikte atlatıcaz. Bunca derdi çileyi nasıl birlikte atlattıysak öyle atlatıcaz güven bana.
+
+<br><br>
+
+Seni gerçekten çok seviyorum ve senin de beni sevdiğini biliyorum o yüzden bu söylediklerimin hiçbirinden şüphe etmiyorum. İyiki benim sevgilimsin.
+
+<br><br>
+
+Sana olan içimdeki duyguları düzgün şekilde anlatamıyorum, bana bir insanın böyle hissettireceğini asla düşünmezdim ama oluyomuş işte. Seninleyken herşeyden zevk alıyorum; gezmekten, kafede oturmaktan, yemek yemekten, oyun oynamaktan, boş boş oturmaktan bile zevk alıyorum seninle olduğum sürece.
+
+<br><br>
+
+Senin, benim tüm dualarımın karşılığı olduğunu düşünüyorum. Allahın bana gönderdiği bir meleksin, senin sayende bu dünyada cenneti yaşıyorum aşkım benim.
+
+<br><br>
+
+İyiki varsın iyiki benimsin seni ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK SSSSSSSSSSEEEEEEEEEEEEVVVVVVVVVVVVİİİİİİİİİİİİİİİİİİYYYYYYYYYYYOOOOOOORRRRRRRUUUUUUUUUUUMMMMMMMMMMMMM
+
+<br><br>
+
+kocan ♡
 
 </div>
 
@@ -997,9 +1105,27 @@ updateTimer();
 
 function openLetter(){
 
+const message =
+document.getElementById("message");
+
+const content =
+document.getElementById("letterContent");
+
+content.innerHTML =
+message.innerHTML;
+
 document
-.getElementById("message")
-.classList.toggle("open");
+.getElementById("letterModal")
+.classList.add("open");
+
+}
+
+
+function closeLetter(){
+
+document
+.getElementById("letterModal")
+.classList.remove("open");
 
 }
 
@@ -1307,6 +1433,17 @@ lbImage.style.transform=
 );
 
 </script>
+<div id="letterModal" class="letter-modal">
 
+  <div class="letter-paper">
+
+    <button class="letter-close" onclick="closeLetter()">×</button>
+
+    <div class="letter-content" id="letterContent">
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
