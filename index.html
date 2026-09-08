@@ -1,181 +1,757 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8dce5">
-  <title>Alperen & Hayal ♡</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --pink:#f6d7df; --rose:#b86f82; --dark:#4b3038; --cream:#fff9f7;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--cream);color:var(--dark);font-family:Montserrat,sans-serif}
-    .hidden{display:none!important}
-    #lock{min-height:100vh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden;
-      background:radial-gradient(circle at 20% 20%,#fff 0 15%,transparent 40%),
-                 linear-gradient(135deg,#fff7f5,#f7dce4)}
-    .petal{position:absolute;font-size:30px;opacity:.22;animation:float 7s infinite ease-in-out}
-    .p1{left:8%;top:15%}.p2{right:10%;top:25%;animation-delay:1s}.p3{left:20%;bottom:15%;animation-delay:2s}.p4{right:22%;bottom:10%;animation-delay:3s}
-    @keyframes float{50%{transform:translateY(-22px) rotate(12deg)}}
-    .lock-card{width:min(430px,100%);padding:42px 28px;text-align:center;background:rgba(255,255,255,.72);
-      backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.8);border-radius:30px;box-shadow:0 20px 70px #9b657322}
-    .heart{font-size:48px;margin-bottom:4px}
-    h1,h2{font-family:"Cormorant Garamond",serif}
-    .lock-card h1{font-size:42px;margin:0 0 8px}
-    .lock-card p{font-size:13px;opacity:.7;margin:0 0 25px}
-    input{width:100%;padding:15px 17px;border:1px solid #e5bdc9;border-radius:14px;background:#fff;color:var(--dark);font-size:16px;outline:none;text-align:center}
-    button{width:100%;margin-top:12px;padding:15px;border:0;border-radius:14px;background:var(--rose);color:white;font-weight:600;font-size:15px;cursor:pointer}
-    #wrong{color:#a84d67;font-size:12px;margin-top:10px;min-height:16px}
-    .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:35px 20px;
-      background:linear-gradient(rgba(255,247,246,.35),rgba(255,247,246,.9)),url("images/cover.jpg") center/cover;
-      position:relative}
-    .hero-inner{max-width:760px;background:#fff8f5cc;backdrop-filter:blur(5px);padding:45px 28px;border-radius:35px}
-    .eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:11px;opacity:.65}
-    .hero h1{font-size:clamp(56px,13vw,105px);line-height:.8;margin:20px 0;color:#633e49}
-    .hero h1 span{font-size:.45em;display:block;margin:17px 0;font-family:Montserrat;font-weight:400}
-    .hero p{font-family:"Cormorant Garamond",serif;font-size:28px;margin:0}
-    .scroll{margin-top:35px;font-size:12px;opacity:.6}
-    section{padding:90px 20px;max-width:1050px;margin:auto}
-    .title{text-align:center;margin-bottom:38px}
-    .title h2{font-size:50px;margin:0 0 8px}
-    .title p{font-size:13px;opacity:.65}
-    .letter{background:white;border-radius:28px;padding:38px;box-shadow:0 12px 45px #8b596614;line-height:1.9;font-family:"Cormorant Garamond",serif;font-size:24px;text-align:center}
-    .timer{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:720px;margin:auto}
-    .time{background:#fff;border-radius:20px;padding:22px 8px;text-align:center;box-shadow:0 10px 35px #8b596612}
-    .num{font-family:"Cormorant Garamond",serif;font-size:43px;font-weight:700}
-    .label{font-size:10px;text-transform:uppercase;letter-spacing:1px;opacity:.55}
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-    .photo{aspect-ratio:1/1;border-radius:22px;overflow:hidden;background:#f2dfe4;position:relative}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .photo.placeholder{display:grid;place-items:center;text-align:center;padding:15px;color:#9a6875;font-size:12px}
-    .memory{background:#f9e8eb;border-radius:28px;padding:40px;text-align:center}
-    .memory .date{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.6}
-    .memory h3{font-family:"Cormorant Garamond",serif;font-size:42px;margin:12px 0}
-    footer{text-align:center;padding:65px 20px 90px}
-    footer .big{font-family:"Cormorant Garamond",serif;font-size:38px}
-    .music-btn{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;margin:0;padding:0;background:#fff;color:var(--rose);box-shadow:0 8px 25px #0002;z-index:10}
-    @media(max-width:650px){
-      section{padding:70px 16px}.gallery{grid-template-columns:repeat(2,1fr)}.timer{grid-template-columns:repeat(2,1fr)}
-      .letter{padding:28px 20px;font-size:21px}.title h2{font-size:42px}.hero-inner{padding:38px 20px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alperen & Hayal ♡</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:#fff8fa;
+  color:#5b3944;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+.hidden{display:none!important}
+
+#lock{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:linear-gradient(135deg,#fff5f7,#f3d7df);
+  text-align:center;
+}
+
+.lock-card{
+  width:100%;
+  max-width:430px;
+  padding:45px 28px;
+  background:rgba(255,255,255,.8);
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(120,70,90,.15);
+}
+
+.lock-heart{
+  font-size:55px;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
+
+.lock-card h1{
+  font-family:Georgia,serif;
+  font-size:42px;
+  margin:12px 0;
+}
+
+.lock-card p{
+  opacity:.65;
+  margin-bottom:25px;
+}
+
+.lock-card input{
+  width:100%;
+  padding:16px;
+  border:1px solid #e1bbc7;
+  border-radius:15px;
+  text-align:center;
+  font-size:17px;
+  outline:none;
+}
+
+.lock-card button{
+  width:100%;
+  margin-top:12px;
+  padding:16px;
+  border:0;
+  border-radius:15px;
+  background:#b96f83;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+}
+
+#error{
+  color:#a74e67;
+  font-size:13px;
+  margin-top:10px;
+  min-height:18px;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  background:
+    linear-gradient(rgba(255,248,250,.7),rgba(255,248,250,.94)),
+    url("01.jpeg") center/cover;
+}
+
+.hero-box{
+  background:rgba(255,255,255,.72);
+  padding:45px 28px;
+  border-radius:35px;
+  max-width:750px;
+  backdrop-filter:blur(7px);
+}
+
+.small{
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:11px;
+  opacity:.6;
+}
+
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(55px,13vw,105px);
+  line-height:.8;
+  margin:28px 0;
+}
+
+.hero h1 span{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:28px;
+  margin:18px;
+}
+
+.hero p{
+  font-family:Georgia,serif;
+  font-size:28px;
+}
+
+section{
+  max-width:1050px;
+  margin:auto;
+  padding:85px 18px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-title h2{
+  font-family:Georgia,serif;
+  font-size:46px;
+  margin-bottom:10px;
+}
+
+.section-title p{
+  opacity:.6;
+}
+
+.letter{
+  background:white;
+  padding:40px;
+  border-radius:28px;
+  box-shadow:0 15px 45px rgba(100,60,75,.08);
+  font-family:Georgia,serif;
+  font-size:23px;
+  line-height:1.8;
+  text-align:center;
+}
+
+.timer{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  max-width:750px;
+  margin:auto;
+}
+
+.time{
+  background:white;
+  border-radius:22px;
+  padding:25px 8px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(100,60,75,.07);
+}
+
+.number{
+  font-family:Georgia,serif;
+  font-size:42px;
+  font-weight:bold;
+}
+
+.label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.5;
+  margin-top:5px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.photo{
+  aspect-ratio:1;
+  overflow:hidden;
+  border-radius:22px;
+  background:#f0dfe4;
+  box-shadow:0 10px 30px rgba(100,60,75,.08);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.photo:hover{
+  transform:translateY(-5px) rotate(-1deg);
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.more{
+  margin-top:30px;
+  text-align:center;
+  padding:20px;
+  border:2px dashed #dcb6c1;
+  border-radius:20px;
+  opacity:.65;
+}
+
+.memory{
+  background:#f8e8ed;
+  border-radius:30px;
+  padding:45px 25px;
+  text-align:center;
+}
+
+.memory .date{
+  letter-spacing:3px;
+  font-size:12px;
+}
+
+.memory h3{
+  font-family:Georgia,serif;
+  font-size:40px;
+  margin:15px 0;
+}
+
+.envelope{
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+}
+
+.envelope-box{
+  background:white;
+  border-radius:25px;
+  padding:35px;
+  box-shadow:0 15px 45px rgba(100,60,75,.08);
+}
+
+.envelope-icon{
+  font-size:70px;
+  margin-bottom:15px;
+}
+
+.envelope-box button{
+  margin-top:20px;
+  padding:14px 25px;
+  border:0;
+  border-radius:15px;
+  background:#b96f83;
+  color:white;
+  font-weight:bold;
+}
+
+.message{
+  display:none;
+  margin-top:25px;
+  font-family:Georgia,serif;
+  font-size:21px;
+  line-height:1.8;
+}
+
+.message.open{
+  display:block;
+}
+
+footer{
+  text-align:center;
+  padding:70px 20px 100px;
+}
+
+footer .big{
+  font-family:Georgia,serif;
+  font-size:40px;
+}
+
+.music{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:0;
+  background:white;
+  color:#b96f83;
+  box-shadow:0 8px 30px rgba(0,0,0,.15);
+  font-size:20px;
+  z-index:10;
+}
+
+.heart{
+  position:fixed;
+  pointer-events:none;
+  animation:fall linear forwards;
+  z-index:20;
+}
+
+@keyframes fall{
+  from{
+    transform:translateY(-50px) rotate(0);
+    opacity:0;
+  }
+  15%{opacity:1}
+  to{
+    transform:translateY(105vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:700px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .timer{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .letter{
+    padding:28px 20px;
+    font-size:20px;
+  }
+
+  .section-title h2{
+    font-size:40px;
+  }
+}
+</style>
 </head>
+
 <body>
+
 <div id="lock">
-  <div class="petal p1">🌸</div><div class="petal p2">🌷</div><div class="petal p3">🌸</div><div class="petal p4">🌷</div>
   <div class="lock-card">
-    <div class="heart">♡</div>
+    <div class="lock-heart">♡</div>
     <h1>Alperen & Hayal</h1>
     <p>Bu küçük dünya sadece ikimiz için.</p>
-    <input id="password" type="password" inputmode="numeric" placeholder="Şifreyi gir..." autocomplete="off">
+
+    <input
+      id="password"
+      type="password"
+      inputmode="numeric"
+      placeholder="Şifreyi gir..."
+    >
+
     <button onclick="unlock()">Giriş yap ♡</button>
-    <div id="wrong"></div>
+
+    <div id="error"></div>
   </div>
 </div>
 
+
 <main id="site" class="hidden">
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">sana ait küçük bir köşe</div>
-      <h1>Alperen <span>&</span> Hayal</h1>
-      <p>Biricik sevgilimmmm ♡</p>
-      <div class="scroll">aşağı kaydır · anılarımız burada</div>
-    </div>
-  </section>
 
-  <section>
-    <div class="title"><h2>Biricik sevgilimmmm</h2><p>Belki kelimeler yetmez ama yine de deniyorum...</p></div>
-    <div class="letter">
-      Seninle geçen her an benim için mükemmel çünkü yanımda sen varsın.
-      Bu site de bizim için küçük bir anı kutusu olsun.
-      Buraya beraber güldüğümüz, gezdiğimiz, yediğimiz ve
-      “iyi ki” dediğimiz bütün güzel şeyleri bırakabiliriz.
-      <br><br>
-      <b>Seni ÇÇÇOOOOOOKKKKKKKK seviyorum Aşkımmmmm. ♡</b>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-box">
+    <div class="small">sana ait küçük bir köşe</div>
 
-  <section>
-    <div class="title"><h2>Ne kadar zamandır?</h2><p>3 Aralık 2024'ten beri...</p></div>
-    <div class="timer">
-      <div class="time"><div class="num" id="days">0</div><div class="label">gün</div></div>
-      <div class="time"><div class="num" id="hours">0</div><div class="label">saat</div></div>
-      <div class="time"><div class="num" id="minutes">0</div><div class="label">dakika</div></div>
-      <div class="time"><div class="num" id="seconds">0</div><div class="label">saniye</div></div>
-    </div>
-  </section>
+    <h1>
+      Alperen
+      <span>&</span>
+      Hayal
+    </h1>
 
-  <section>
-    <div class="title"><h2>Anılarımız</h2><p>Fotoğraflarını aşağıdaki kutulara ekleyebilirsin.</p></div>
-    <div class="gallery">
-      <div class="photo"><img src="images/photo1.jpg" alt="Anımız 1" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo1.jpg ekle'"></div>
-      <div class="photo"><img src="images/photo2.jpg" alt="Anımız 2" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo2.jpg ekle'"></div>
-      <div class="photo"><img src="images/photo3.jpg" alt="Anımız 3" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo3.jpg ekle'"></div>
-      <div class="photo"><img src="images/photo4.jpg" alt="Anımız 4" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo4.jpg ekle'"></div>
-      <div class="photo"><img src="images/photo5.jpg" alt="Anımız 5" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo5.jpg ekle'"></div>
-      <div class="photo"><img src="images/photo6.jpg" alt="Anımız 6" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.innerHTML='📷<br>images/photo6.jpg ekle'"></div>
-    </div>
-  </section>
+    <p>Biricik sevgilimmmm ♡</p>
 
-  <section>
-    <div class="memory">
-      <div class="date">03 · 12 · 2024</div>
-      <h3>Her şeyin başladığı gün ♡</h3>
-      <p>Ve umarım daha nice güzel günün ilk sayfasıdır.</p>
-    </div>
-  </section>
+    <br>
+    <p style="font-size:14px;opacity:.6">
+      03.12.2024'ten beri...
+    </p>
+  </div>
+</section>
 
-  <footer>
-    <div class="big">Sonsuza kadar sen & ben. ♡</div>
-    <p>Alperen → Hayal</p>
-  </footer>
+
+<section>
+
+  <div class="section-title">
+    <h2>Biricik sevgilimmmm</h2>
+    <p>Buraya kendi yazını yazabilirsin.</p>
+  </div>
+
+  <div class="letter">
+
+    <!-- KENDİ YAZINI BURAYA YAZ -->
+
+    Hayal,
+
+    <br><br>
+
+    Buraya ona söylemek istediğin uzun mesajı yazabilirsin.
+    İstediğin kadar uzun olabilir.
+
+    <br><br>
+
+    Birlikte geçirdiğimiz her güzel anı hatırlamak ve
+    daha nice güzel anılar biriktirmek dileğiyle...
+
+    <br><br>
+
+    Seni çok seviyorum. ♡
+
+    <!-- KENDİ YAZINI BURAYA YAZ -->
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="section-title">
+    <h2>Ne kadar zamandır?</h2>
+    <p>03 Aralık 2024'ten beri...</p>
+  </div>
+
+  <div class="timer">
+
+    <div class="time">
+      <div class="number" id="days">0</div>
+      <div class="label">gün</div>
+    </div>
+
+    <div class="time">
+      <div class="number" id="hours">0</div>
+      <div class="label">saat</div>
+    </div>
+
+    <div class="time">
+      <div class="number" id="minutes">0</div>
+      <div class="label">dakika</div>
+    </div>
+
+    <div class="time">
+      <div class="number" id="seconds">0</div>
+      <div class="label">saniye</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="section-title">
+    <h2>Anılarımız</h2>
+    <p>Fotoğraflarımız ♡</p>
+  </div>
+
+  <div class="gallery">
+
+    <div class="photo"><img src="01.jpeg"></div>
+    <div class="photo"><img src="02.jpeg"></div>
+    <div class="photo"><img src="03.jpeg"></div>
+    <div class="photo"><img src="04.jpeg"></div>
+    <div class="photo"><img src="05.jpeg"></div>
+    <div class="photo"><img src="06.jpeg"></div>
+    <div class="photo"><img src="07.jpeg"></div>
+    <div class="photo"><img src="08.jpeg"></div>
+    <div class="photo"><img src="09.jpeg"></div>
+    <div class="photo"><img src="10.jpeg"></div>
+
+  </div>
+
+  <div class="more">
+    📸 Buraya daha fazla fotoğraf ekleyebilirsin.
+    <br>
+    11.jpeg, 12.jpeg, 13.jpeg diye devam edebilirsin.
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="memory">
+
+    <div class="date">03 · 12 · 2024</div>
+
+    <h3>Her şeyin başladığı gün ♡</h3>
+
+    <p>
+      Ve umarım daha nice güzel günün ilk sayfasıdır.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="section-title">
+    <h2>Sana bir mektubum var...</h2>
+    <p>Buraya tıklayınca mesajını açabilirsin.</p>
+  </div>
+
+  <div class="envelope">
+
+    <div class="envelope-box">
+
+      <div class="envelope-icon">💌</div>
+
+      <h3>Hayal'e</h3>
+
+      <button onclick="openLetter()">
+        Mektubu aç ♡
+      </button>
+
+      <div id="message" class="message">
+
+        <!-- MEKTUBUNU BURAYA YAZ -->
+
+        Biricik sevgilim,
+
+        <br><br>
+
+        Buraya ona yazmak istediğin özel mektubu yazabilirsin.
+
+        <br><br>
+
+        İyi ki varsın. İyi ki benimlesin.
+        Seni her şeyden çok seviyorum. ♡
+
+        <!-- MEKTUBUNU BURAYA YAZ -->
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="section-title">
+    <h2>Bizim şarkımız 🎵</h2>
+    <p>Yalın — Baş Harfi Ben</p>
+  </div>
+
+  <div class="letter">
+
+    ♫ Baş Harfi Ben ♫
+
+    <br><br>
+
+    <small>
+      Kendi ses dosyanı <b>music/ben.mp3</b> olarak ekleyebilirsin.
+    </small>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="big">
+    Sonsuza kadar sen & ben. ♡
+  </div>
+
+  <br>
+
+  <p>Alperen → Hayal</p>
+
+</footer>
+
 </main>
 
-<button id="musicBtn" class="music-btn hidden" onclick="toggleMusic()">♫</button>
-<audio id="music" loop preload="none">
+
+<button id="musicBtn" class="music hidden" onclick="toggleMusic()">
+  ♫
+</button>
+
+<audio id="music" loop>
   <source src="music/ben.mp3" type="audio/mpeg">
 </audio>
 
+
 <script>
-  const PASSWORD = "031224";
-  const START_DATE = new Date("2024-12-03T00:00:00");
 
-  function unlock(){
-    const val = document.getElementById("password").value;
-    if(val === PASSWORD){
-      document.getElementById("lock").classList.add("hidden");
-      document.getElementById("site").classList.remove("hidden");
-      document.getElementById("musicBtn").classList.remove("hidden");
-      localStorage.setItem("hayalUnlocked","1");
-      updateTimer();
-    } else {
-      document.getElementById("wrong").textContent = "Şifre yanlış, tekrar dene ♡";
+const PASSWORD = "031224";
+
+const START_DATE = new Date("2024-12-03T00:00:00");
+
+
+function unlock(){
+
+  const value = document.getElementById("password").value;
+
+  if(value === PASSWORD){
+
+    document.getElementById("lock").classList.add("hidden");
+
+    document.getElementById("site").classList.remove("hidden");
+
+    document.getElementById("musicBtn").classList.remove("hidden");
+
+    startHearts();
+
+    updateTimer();
+
+  }else{
+
+    document.getElementById("error").textContent =
+      "Şifre yanlış, tekrar dene ♡";
+
+  }
+
+}
+
+
+document.getElementById("password").addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key === "Enter"){
+      unlock();
     }
-  }
-  document.getElementById("password").addEventListener("keydown", e => { if(e.key==="Enter") unlock(); });
 
-  function updateTimer(){
-    const diff = Math.max(0, Date.now() - START_DATE.getTime());
-    const total = Math.floor(diff/1000);
-    document.getElementById("days").textContent = Math.floor(total/86400);
-    document.getElementById("hours").textContent = Math.floor(total%86400/3600);
-    document.getElementById("minutes").textContent = Math.floor(total%3600/60);
-    document.getElementById("seconds").textContent = total%60;
   }
-  setInterval(updateTimer,1000);
+);
 
-  let playing=false;
-  function toggleMusic(){
-    const m=document.getElementById("music");
-    if(!m.querySelector("source").getAttribute("src")) return;
-    if(!playing){m.play();playing=true;document.getElementById("musicBtn").textContent="❚❚";}
-    else {m.pause();playing=false;document.getElementById("musicBtn").textContent="♫";}
+
+function updateTimer(){
+
+  let total = Math.max(
+    0,
+    Math.floor(
+      (Date.now() - START_DATE.getTime()) / 1000
+    )
+  );
+
+  document.getElementById("days").textContent =
+    Math.floor(total / 86400);
+
+  document.getElementById("hours").textContent =
+    Math.floor((total % 86400) / 3600);
+
+  document.getElementById("minutes").textContent =
+    Math.floor((total % 3600) / 60);
+
+  document.getElementById("seconds").textContent =
+    total % 60;
+
+}
+
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+function openLetter(){
+
+  document
+    .getElementById("message")
+    .classList.toggle("open");
+
+}
+
+
+let playing = false;
+
+
+function toggleMusic(){
+
+  const music = document.getElementById("music");
+
+  if(!playing){
+
+    music.play();
+
+    playing = true;
+
+    document.getElementById("musicBtn").textContent = "❚❚";
+
+  }else{
+
+    music.pause();
+
+    playing = false;
+
+    document.getElementById("musicBtn").textContent = "♫";
+
   }
+
+}
+
+
+function startHearts(){
+
+  setInterval(function(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+      Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left =
+      Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+      (12 + Math.random()*18) + "px";
+
+    heart.style.animationDuration =
+      (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+
+      heart.remove();
+
+    },10000);
+
+  },900);
+
+}
+
 </script>
+
 </body>
 </html>
